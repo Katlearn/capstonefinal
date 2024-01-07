@@ -1,0 +1,43 @@
+
+*{
+  font-family:'Poppins',sans-serif ;
+}
+
+.page{
+  width: 900px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+}
+
+
+.side-image{
+  background-image: url(/public/img/login.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px 0 0 10px;
+}
+.wrapper{
+  padding: 0 20px 0 20px;
+
+}
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.input-box header{
+  font-weight:700 ;
+  text-align: center;
+  margin-bottom: 45px;
+}

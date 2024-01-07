@@ -1,0 +1,30 @@
+*{
+  font-family: 'Poppins';
+  margin: 0;
+  padding: 0;
+}
+.navbar-collapse {
+  flex-grow: unset;
+}
+.navbar-brand :hover {
+  background-color: darkgoldenrod;
+  color: black;
+  transform: scale(2);
+}
+.navbar-brand span{
+  font-size: 30px;
+  color: darkgoldenrod;
+}
+
+.nav-item a{
+  color: white;
+  text-decoration: none;
+  margin-left: 5px;
+}
+.nav-item a:hover{
+  background-color: darkgoldenrod;
+  color: black;
+ }
+ .navbar-collapse {
+  flex-grow: unset;
+ }
