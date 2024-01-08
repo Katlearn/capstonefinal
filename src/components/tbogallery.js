@@ -71,7 +71,7 @@ const Tbogallery = () => {
       }}>
         <button onClick={() => imgAction()} style={{position:'absolute',top: 10,right: 10,width:'30px'}}>X</button>
         <button onClick={()=> imgAction ('previous-img')}><GrPrevious /></button>
-        <img src={data.img} style={{width:'auto',maxWidth:'90%',maxHeight:'90%'}}></img>
+        <img src={data.img} style={{width:'auto',maxWidth:'90%',maxHeight:'90%'}} alt='gallery-image'></img>
         <button onClick={()=> imgAction ('next-img')}><GrFormNext /></button>
 
       </div>
