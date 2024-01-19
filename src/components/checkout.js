@@ -1,40 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import './checkout.css';
 
 const Checkout = () => {
+    const [dataFromLocalStorage, setDataFromLocalStorage] = useState([]);
 
-    // TOKEN AUTHENTICATION
-//   const userToken= localStorage.getItem('token')
-//   const getUserData = () => {
-//     fetch('http://localhost:3000/user', {
-//         method: 'get',
-//         headers: {
-//             'Authorization': 'Bearer '+ userToken
-//         },
-//         body: null
-//     }).then((result)=>{
-//         return result.json();
-//     }).then((result)=>{
-//         console.log('result: ', result)
-//     })
-// }
-// useEffect(()=>{
-//   getUserData();
-// },[]) 
-    function displayCheckoutItems() {
-    const checkoutItemsContainer = document.getElementById("checkoutItems");
-    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    useEffect(() => {
+      // Retrieve data from localStorage when the component mounts
+      const storedDataString = localStorage.getItem('cart');
+      if (storedDataString) {
+        const parsedData = JSON.parse(storedDataString);
+        setDataFromLocalStorage(parsedData);
+      }
+    }, []);
+  
+ // Compute the total price for each item
+ const computeTotalPrice = (item) => {
+    return item.price * item.quantity;
+  };
+  const [cartTotalPrice, setCartTotalPrice] = useState(null);
 
-    // Display checkout items
-    cartItems.forEach(item => {
-        const checkoutItem = document.createElement("div");
-        checkoutItem.textContent = `${item.name} - $${item.price.toFixed(2)}`;
-        checkoutItemsContainer.appendChild(checkoutItem);
-    });
-}
+  useEffect(() => {
+    // Retrieve cart total price from localStorage when the component mounts
+    const storedTotalPrice = localStorage.getItem('cartTotalPrice');
+    if (storedTotalPrice) {
+      setCartTotalPrice(parseFloat(storedTotalPrice));
+    }
+  }, []);
+
+  //shipping fee
+    const [shippingFee, setShippingFee] = useState(0);
+    useEffect(() => {
+    // Calculate shipping fee based on cart total price
+    if (cartTotalPrice !== null) {
+      setShippingFee(cartTotalPrice >= 3000 ? 0 : 60); // Example: Free shipping for orders worth $3000 or more
+    }
+  }, [cartTotalPrice]);
+
+
+  //total amount
+    const ComputedTotalAmount = shippingFee+cartTotalPrice ;
+  
+
+
+  
 
 
 
+  
   return (
    <>
       <div className='py-3 bg-warning'>
@@ -168,6 +180,47 @@ const Checkout = () => {
             <div className='col-md-5'>
                 
                 <div className='checkoutItems'>
+                <div>
+                    <h1>CART ITEMS</h1>
+                    <table className='table'>
+                        <thead>
+                        <tr>
+                            <th scope='col'>ID</th>
+                            <th scope='col'>Name</th>
+                            <th scope='col'>Category</th>
+                            <th scope='col'>QTY</th>
+                            <th scope='col'>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {dataFromLocalStorage.map(item => (
+                            <tr scope='row' key={item.id}>
+                            <td>{item.id}</td>
+                            <td>{item.name}</td>
+                            <td>{item.category}</td>
+                            <td>{item.qty}</td>
+                            <td>{item.price * item.qty}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                            <div className='totalPrice'>
+                                <div className='text-end mb-3'>
+                                    {cartTotalPrice !== null && (
+                                <div>
+                                    <strong>Total Price:</strong> P{cartTotalPrice.toFixed(2)}
+                                </div>
+                                )}
+                                </div>
+                            </div>
+                            <div className='text-end mb-3'>
+                                <strong>Shipping Fee:</strong> P{shippingFee.toFixed(2)}
+                            </div>
+
+                            <div className='text-end'>
+                                <strong>Total Amount:</strong> P{ComputedTotalAmount.toFixed(2)}
+                            </div>
+                    </div>
 
                 </div>
  

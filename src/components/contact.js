@@ -61,7 +61,12 @@ const Contact = () => {
     <div className='container mt-5 shadow'>
       <div className='row'>
         <div className='col-md-4 bg-dark p-5 text-light'>
-            <h2>Let's get in touch</h2>
+          <div className='row g-3'>
+            <h2 className='col-md-12'>Let's get in touch</h2>
+            <div className='col-md-12 map'>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867.1570183341655!2d121.36551917499162!3d14.244061086201121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397e3dbf8e6287f%3A0x952c6ffc4545e71c!2sThe%20Brickoven%20Caf%C3%A9!5e0!3m2!1sen!2sph!4v1704714262483!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
         </div>
         <div className='col-md-8 p-5'>
           <h2 className='mb-5'>Get in touch</h2>

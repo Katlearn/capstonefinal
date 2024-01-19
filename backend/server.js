@@ -184,9 +184,13 @@ app.post('/venue',function(request,response){
     const insertQuery = `INSERT INTO first_database.inquiry_table (firstName,lastName,organization,profit,nonprofit,event,email,contact,address,address2,city,state,zipcode,eventdate,appt,exitTime,guestNumber,catererYes,catererNo,message) VALUES ("${firstName}","${lastName}","${inputOrg}","${flexradio1}","${flexradio2}","${Event}","${email}","${contact}","${address}","${address2}","${city}","${state}","${zipcode}","${eventDate}","${appt}","${exit}","${guestNumber}","${catererYes}","${catererNo}","${message}")`;
 
     connection.query(insertQuery,function(error,result) {
-      if (error) throw error;
-      console.log('result:',result);
-      response.json({"success":"inquiry sent"});
+      if (error) {
+        response.json({"error" : "Error saving your data"});
+      } else {
+        console.log('result:',result);
+        response.json({"success":"inquiry sent"});
+      }
+
     })
 })
 
@@ -225,6 +229,51 @@ app.post('/contact',function(request,response){
     })
 })
 
+
+
+// //venue booking 
+
+// // Local storage array (replace it with your actual array)
+// const localStorageArray = [
+//   { key: '1', value: 'John Doe' },
+//   { key: '2', value: 'Jane Doe' },
+//   // Add more data as needed
+// ];
+
+// // Connect to the database
+// connection.connect((err) => {
+//   if (err) {
+//     console.error('Error connecting to MySQL:', err);
+//     return;
+//   }
+
+//   console.log('Connected to MySQL database');
+
+//   // Insert data into the MySQL database
+//   localStorageArray.forEach((item) => {
+//     const sql = 'INSERT INTO your_table_name (column1, column2) VALUES (?, ?)';
+//     const values = [item.key, item.value];
+
+//     connection.query(sql, values, (err, result) => {
+//       if (err) {
+//         console.error('Error inserting data:', err);
+//         return;
+//       }
+
+//       console.log(`Inserted row with ID ${result.insertId}`);
+//     });
+//   });
+
+//   // Close the MySQL connection
+//   connection.end((err) => {
+//     if (err) {
+//       console.error('Error closing MySQL connection:', err);
+//       return;
+//     }
+
+//     console.log('Closed MySQL connection');
+//   });
+// });
 
 
 

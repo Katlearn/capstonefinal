@@ -49,6 +49,12 @@ const Cart = ({cart,setCart}) => {
   }
   //total price
   const totalPrice =cart.reduce((price, item)=> price + item.qty * item.price,0)
+  //total price to local storage
+  
+  const saveTotalPriceToLocalStorage = () => {
+    
+    localStorage.setItem('cartTotalPrice', totalPrice.toString());
+  };
 
   return (
     <>
@@ -94,7 +100,7 @@ const Cart = ({cart,setCart}) => {
             <>
             <div className='text-center'>
                 <h2 className='totalPrice text-center fw-bold'>TOTAL :₱{totalPrice}</h2>
-                <button className='checkout btn btn-warning btn-lg' type='button'><Link to='/checkout' className='text-dark fw-bold text-uppercase text-decoration-none '>Checkout</Link></button>
+                <button className='checkout btn btn-warning btn-lg' type='button'><Link to='/checkout' className='text-dark fw-bold text-uppercase text-decoration-none ' onClick={saveTotalPriceToLocalStorage}>Checkout</Link></button>
             </div>
             
             </>
