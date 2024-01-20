@@ -1,3 +1,5 @@
+
+
 .icon li{
   margin-left: 20px;
   list-style: none;
@@ -7,6 +9,12 @@
   transition: 0.5s;
 
 }
+.icon li a{
+
+  text-decoration: none;
+  color: white;
+}
+
 .icon li:hover{
    
   background: goldenrod;

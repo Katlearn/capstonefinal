@@ -4,6 +4,8 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 import cookieParser from 'cookie-parser';
+
+
 const app = express()
 app.use (cors({
   origin:["http://localhost:3001"],
@@ -228,6 +230,41 @@ app.post('/contact',function(request,response){
       response.json({"success":"message sent"});
     })
 })
+
+
+
+
+//checkout form
+const generateOrderReference = () => {
+  const timestamp = Date.now().toString();
+  const randomId = Math.floor(Math.random() * 1000).toString().padStart(4, '0');
+  return `${timestamp}-${randomId}`;
+};
+// API endpoint to save checkout details
+app.post('/api/checkout', (req, res) => {
+  const { firstname, lastname,phonenumber,emailaddress, fulladdress,city,state,zipcode, paymentmethod,total } = req.body;
+
+   // Generate order reference number
+   const orderReference = generateOrderReference();
+
+  const sql = 'INSERT INTO first_database.checkout_details (order_reference, firstname, lastname,phonenumber,emailaddress, fulladdress,city,state,zipcode, paymentmethod,total ) VALUES (?, ?, ?, ?,?,?,?,?,?,?,?)';
+  connection.query(sql, [orderReference,firstname, lastname,phonenumber,emailaddress, fulladdress,city,state,zipcode, paymentmethod,total ], (err, result) => {
+    if (err) {
+      console.error('Error inserting data into MySQL:', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.status(200).json({ orderReference, message: 'Checkout details saved successfully' });
+      console.log('result:',result);
+      
+    }
+  });
+});
+
+
+
+//order summary
+
+
 
 
 

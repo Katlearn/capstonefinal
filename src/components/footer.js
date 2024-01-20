@@ -2,12 +2,46 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { RiFacebookBoxFill } from "react-icons/ri";
 import { RiInstagramFill } from "react-icons/ri";
-import { RiMailFill } from "react-icons/ri";
-import { RiTwitterXFill } from "react-icons/ri";
+import { TbBrandShopee } from "react-icons/tb";
+import { CiLocationOn } from "react-icons/ci";
 import { LuArrowUpFromLine } from "react-icons/lu";
 import './footer.css'
 
 const Footer = () => {
+
+
+    const openFb = () => {
+      // Specify the URL you want to open in the new window
+      const url = 'https://www.facebook.com/thebrickovencafeph';
+
+      // Open a new window or tab
+        window.open(url, '_blank');
+    }
+    const openInsta = () => {
+      // Specify the URL you want to open in the new window
+      const url = 'https://www.instagram.com/thebrickovencafe/';
+
+      // Open a new window or tab
+        window.open(url, '_blank');
+    }
+
+    const openShopee = () => {
+      // Specify the URL you want to open in the new window
+      const url = 'https://shopee.ph/thebrickovencafeph?fbclid=IwAR0jRYwQRq84mLtzcc6z_ju_9E8zGtNMvI356X45R6M22beeOzpImB_sB-w';
+
+      // Open a new window or tab
+        window.open(url, '_blank');
+    }
+
+    const openLoc = () => {
+      // Specify the URL you want to open in the new window
+      const url = 'https://www.google.com/maps/place/The+Brickoven+Caf%C3%A9/@14.2439911,121.3690739,17z/data=!3m1!4b1!4m6!3m5!1s0x3397e3dbf8e6287f:0x952c6ffc4545e71c!8m2!3d14.2439911!4d121.3690739!16s%2Fg%2F11jhxmctft?entry=ttu';
+
+      // Open a new window or tab
+        window.open(url, '_blank');
+    }
+
+
   return (
    <>
    
@@ -70,10 +104,26 @@ const Footer = () => {
         <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
           <p>&copy; 2023 Company, Inc. All rights reserved.</p>
           <div className='icon d-flex'>
-                    <li><RiFacebookBoxFill /></li>
-                    <li><RiInstagramFill /></li>
-                    <li><RiMailFill /></li>
-                    <li><RiTwitterXFill /></li>
+                     <li>
+                        <a href="#" onClick={openFb}>
+                          <RiFacebookBoxFill />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" onClick={openInsta}>
+                        <RiInstagramFill />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" onClick={openShopee}>
+                        <TbBrandShopee />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" onClick={openLoc}>
+                        <CiLocationOn />
+                        </a>
+                      </li>
             </div>
         </div>
       </footer>

@@ -12,6 +12,8 @@ import Venue from './venue.js'
 import Gallery from './gallery.js'
 import Tbogallery from './tbogallery.js'
 import Videogallery from './videogallery.js'
+import Confirmation from './confirmation.js'
+
 const Rout = ({product,setProduct,cart,setCart,addtocart}) => {
 
   // const userToken = localStorage.getItem('token');
@@ -35,6 +37,7 @@ const Rout = ({product,setProduct,cart,setCart,addtocart}) => {
           <Route path='/venue' element={<Venue/>}/>
           <Route path='/cart' element={<Cart cart={cart} setCart={setCart}/>}/>
           <Route path='/checkout' element={<Checkout/>}/>
+          <Route path='/confirmation' element={<Confirmation/>}/>
             
            
       </Routes>
