@@ -6,8 +6,8 @@ const Venue = () => {
   const sendInquiry= function(){
     const inquiryBtn= document.getElementById('submit');
         inquiryBtn.onclick=function(){
-        const firstName= document.getElementById('inputFirstname')
-        const lastName= document.getElementById('inputLastname')
+        const firstName= document.getElementById('inputFirstName')
+        const lastName= document.getElementById('inputLastName')
         const inputOrg=document.getElementById('inputOrganization')
         const flexradio1=document.getElementById('flexRadioYes')
         const flexradio2=document.getElementById('flexRadioNo')
@@ -89,19 +89,24 @@ const Venue = () => {
       </div>
       <div className="formInput">
           <div className="row g-2 align-items-center">
-              <label for="inputFirstname" className="col-form-label">FIRST NAME<span className="text-danger fw-700">*</span></label>
-              <div className="col-6 mb-5">
-                <input type="name" id="inputFirstname" className="form-control"placeholder="First Name"/>
-              </div>
-              <label for="inputLastname" className="col-form-label">LAST NAME<span className="text-danger fw-700">*</span></label>
-              <div className="col-6 mb-5">
-                <input type="name" id="inputLastname" className="form-control" placeholder="Last Name"/>
-              </div>
-              <div className="mb-5">
-                <label for="inputOrganization" className="col-form-label">Organization</label>
-                <div className="col-6 mb-5" >
+              <div className="col-md-6">
+                  <label for="inputFirstName" className="form-label">First Name<span className="text-danger fw-700">*</span></label>
+                  <input type="name" className="form-control" id="inputFirstName" placeholder="John"/>
+                </div>
+                <div className="col-md-6">
+                  <label for="inputLastName" className="form-label">Last Name<span className="text-danger fw-700">*</span></label>
+                  <input type="name" className="form-control" id="inputLastName" placeholder="Doe"/>
+                </div>
+                <div className="col-6 " >
+                  <label for="inputOrganization" className="col-form-label">Organization</label>
                   <input type="name" id="inputOrganization" className="form-control"placeholder=""/>
                 </div>
+                <div className="col-6 " >
+                  <label for="inputEvent" className="col-form-label">Event<span className="text-danger fw-700">*</span></label>
+                  <input type="name" id="inputEvent" className="form-control"placeholder="ex. Wedding"/>
+                </div>
+              
+              <div className="mb-5">
                 <div>
                   <p>Are you a non-profit organization?<span className="text-danger fw-700">*</span></p>
                   <div className="form-check">
@@ -118,12 +123,7 @@ const Venue = () => {
                   </div>
                 </div>
               </div>
-              <div className="mb-5">
-                <label for="inputEvent" className="col-form-label">Event<span className="text-danger fw-700">*</span></label>
-                <div className="col-6 mb-3" >
-                  <input type="name" id="inputEvent" className="form-control"placeholder="ex. Wedding"/>
-                </div>
-              </div>
+              
           </div>
           <div className="row g-3">
             <div className="col-md-6">

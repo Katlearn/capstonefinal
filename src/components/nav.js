@@ -2,16 +2,22 @@ import React,{useState} from 'react'
 import { BsBag } from "react-icons/bs";
 import { FaTruck } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { CiUser } from "react-icons/ci";
 import './nav.css'
 
 const Nav = ({searchbtn}) => {
   const [search,setSearch] =useState()
 
-  const logout=()=>{
+  const history = useNavigate();
+
+  const handleLogout = () => {
+    // Clear local storage
     localStorage.clear();
-    window.location.href ='login';
-  }
-  
+    
+    // Navigate to home page
+    history.push('/');
+  };
 
   return (
     <>
@@ -45,12 +51,12 @@ const Nav = ({searchbtn}) => {
                 </li>
                 <li className="nav-item dropdown px-2">
                   <a className="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profile
+                  <CiUser />
                   </a>
                   <ul className="dropdown-menu">
                     <Link to='./login' className='link text-dark'>Login</Link>
                     <br></br>
-                    <Link to='./login' className='link text-dark'onClick={logout} >Logout</Link>
+                    <Link to='./login' className='link text-dark'onClick={handleLogout} >Logout</Link>
                   </ul>
                 </li>
                 <li className="nav-item mt-1 px-2">

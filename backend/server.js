@@ -242,10 +242,12 @@ const generateOrderReference = () => {
 };
 // API endpoint to save checkout details
 app.post('/api/checkout', (req, res) => {
-  const { firstname, lastname,phonenumber,emailaddress, fulladdress,city,state,zipcode, paymentmethod,total } = req.body;
-
-   // Generate order reference number
+  const { firstname, lastname,phonenumber,emailaddress, fulladdress,city,state,zipcode, paymentmethod,total,items} = req.body;
+  
+  console.log('checkout_items:',items);
+  // Generate order reference number
    const orderReference = generateOrderReference();
+   console.log('order_reference:',orderReference);  
 
   const sql = 'INSERT INTO first_database.checkout_details (order_reference, firstname, lastname,phonenumber,emailaddress, fulladdress,city,state,zipcode, paymentmethod,total ) VALUES (?, ?, ?, ?,?,?,?,?,?,?,?)';
   connection.query(sql, [orderReference,firstname, lastname,phonenumber,emailaddress, fulladdress,city,state,zipcode, paymentmethod,total ], (err, result) => {
@@ -253,19 +255,47 @@ app.post('/api/checkout', (req, res) => {
       console.error('Error inserting data into MySQL:', err);
       res.status(500).send('Internal Server Error');
     } else {
-      res.status(200).json({ orderReference, message: 'Checkout details saved successfully' });
-      console.log('result:',result);
+
+      res.send('Data stored successfully');
+      // items.forEach(item => {
+      //   const query = 'first_database.checkout_items (order_reference,item_id,item_name,image,price,category,qty) VALUES (?,?,?,?,?,?,?)';
+    
+      //   connection.query(query,[orderReference, item.id,item.name,item.image,item.price,item.category,item.qty], (error, results, fields) => {
+      //     if (error) {
+      //       console.error(error);
+      //     } else {
+      //       console.log(`Inserted data with ID: ${results.insertId}`);
+      //     }
+      //   });
+      // });
+ 
       
     }
   });
 });
 
 
-
-//order summary
-
+// API endpoint to save checkout details
 
 
+// app.post('/api/checkout', (req, res) => {
+//   const items = req.body.items;
+//   const orderReference = generateOrderReference();
+
+//   // Assuming 'data' is an array of objects to be stored in the database
+//   items.forEach((item) => {
+//     const query = 'INSERT INTO first_database.checkout_items SET ?';
+//     connection.query(query, item, (err, result) => {
+//       if (err) {
+//         console.error('Error inserting data into MySQL:', err);
+//         return;
+//       }
+//       console.log('Data inserted into MySQL:', result);
+//     });
+//   });
+
+//   res.send('Data stored successfully');
+// });
 
 
 // //venue booking 

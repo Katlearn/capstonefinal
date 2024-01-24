@@ -53,8 +53,11 @@ const [checkoutData, setCheckoutData] = useState({
     state:'',
     zipcode:'',
     paymentmethod:'',
-    total: 0,
+    total: localStorage.getItem('cartTotalPrice'),
+    items : localStorage.getItem('cart')
+    
   });
+  
   const handleInputChange = e => {
     setCheckoutData({ ...checkoutData, [e.target.name]: e.target.value });
   };
@@ -145,17 +148,21 @@ const [checkoutData, setCheckoutData] = useState({
 
                             <div class="my-3">
                             <div class="form-check">
-                                <input id="cod" name="paymentmethod" type="radio" class="form-check-input" checked required onChange={handleInputChange}/>
-                                <label class="form-check-label" for="cod">Cash on delivery</label>
+                                <select name="paymentmethod" className="box" onChange={handleInputChange} required>
+                                <option value="" disabled selected>Select payment method --</option>
+                                <option value="cash on delivery">Cash on delivery</option>
+                                <option value="pick up">Pick Up</option>
+                                {/* Other payment options */}
+                              </select>
                             </div>
                             
                             </div>
 
 
                             <hr class="my-4"/>
-                            <Link  to='/confirmation'>
+                            
                             <button class="w-100 btn btn-warning btn-lg" type="submit" onClick={handleCheckout}>Place Order</button>
-                            </Link>
+                            
                             
                       </div>
 

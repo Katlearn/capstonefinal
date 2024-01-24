@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import './home.css'
 
 const Home = () => {
   return (
@@ -47,69 +49,59 @@ const Home = () => {
       </div>
     </main>
     
-    <section className="container-fluid w-100" id="card-section">
-      <div className="container-fluid py-0 px-0">
-       <a className="browseMenu" href="MP1_menu/complete-menu.html"><h1 className="text-center fw-bold bg-dark ">Featured Menu</h1></a> 
+    <section className="container-fluid p-5" id="card-section">
+      <div className="container-fluid">
+         <h1 className="text-center fw-bold bg-dark text-white ">Featured Products</h1>
       </div>
-      <div className="row row-cols-1 row-cols-md-3 row-cols-sm-1">
-        <div className="col">
-          <div className="card">
-            <img src="./img/menu-1.jpg" className="card-img-top p-5" alt="..."/>
-            <div className="card-body">
-              <h3 className="card-title">PIZZA</h3>
-              <p><a className="btn btn-md btn-warning fw-bold" href="cart.html">Browse Menu</a></p>
+      <div className="card-group">
+        <div class="card mb-3 max-width: 540px">
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img src="./img/menu-5.jpg" class="img-fluid rounded-start" alt="conchinillpo"/>
+              </div>
+            <div className="col-md-8">
+              <div className="card-body">
+                <h5 className="card-title fw-bold">Conchinillo</h5>
+                <p cclassName="card-text">Crisp, succulent, with moist and tasty meat that easily falls off the bone, cochinillo is a piglet roasted after feeding on sow’s milk for roughly two to six weeks.</p>
+                <p className="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+             </div>
             </div>
           </div>
         </div>
-        <div className="col">
-          <div className="card">
-            <img src="./img/menu-2.jpg" className="card-img-top p-5" alt="..."/>
-            <div className="card-body">
-              <h3 className="card-title">ON-TRAYS</h3>
-              <p><a className="btn btn-md btn-warning fw-bold" href="#">Browse Menu</a></p>
+        <div class="card mb-3 max-width: 540px">
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img src="./img/menu-3.jpg" class="img-fluid rounded-start" alt="conchinillpo"/>
+              </div>
+            <div className="col-md-8">
+              <div className="card-body">
+                <h5 className="card-title fw-bold">Cheesy Spinach Steak</h5>
+                <p cclassName="card-text">Pan Grilled butterflied Flank Steak stuffed with spinach, garlic, and cheese. These delicious.</p>
+                <p className="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+             </div>
             </div>
           </div>
         </div>
-        <div className="col">
-          <div className="card">
-            <img src="./img/menu-3.jpg" className="card-img-top p-5" alt="..."/>
-            <div className="card-body">
-              <h3 className="card-title">STEAKS</h3>
-              <p><a className="btn btn-md btn-warning fw-bold" href="#">Browse Menu</a></p>
+        <div class="card mb-3 max-width: 540px">
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img src="./img/menu-2.jpg" class="img-fluid rounded-start" alt="conchinillpo"/>
+              </div>
+            <div className="col-md-8">
+              <div className="card-body">
+                <h5 className="card-title fw-bold">Halo-halo</h5>
+                <p cclassName="card-text"> Icy dessert made with frozen milk, leche flan, pandan jelly, sago, mais, nata, banana cinnamon, ube halaya and rice crispies.</p>
+                <p className="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+             </div>
             </div>
           </div>
         </div>
-       
+        
       </div>
-      <div  className="row row-cols-1 row-cols-md-3 row-cols-sm-1 py-2 px-0">
-          <div className="col">
-            <div className="card">
-              <img src="./img/menu-4.jpg" className="card-img-top p-5" alt="..."/>
-              <div className="card-body">
-                <h3 className="card-title">STARTERS</h3>
-                <p><a className="btn btn-md btn-warning fw-bold" href="#">Browse Menu</a></p>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <img src="./img/menu-5.jpg" className="card-img-top p-5" alt="..."/>
-              <div className="card-body">
-                <h3 className="card-title">CONCHINILLO</h3>
-                <p><a className="btn btn-md btn-warning fw-bold" href="#">Browse Menu</a></p>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <img src="./img/menu-6.jpg" className="card-img-top p-5" alt="..."/>
-              <div className="card-body">
-                <h3 className="card-title">REFRESHERS</h3>
-                <p><a className="btn btn-md btn-warning fw-bold" href="#">Browse Menu</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <Link to="/products">
+        <div className='text-end'>See Menu</div>      
+      </Link>
+      
     </section>
 
       
@@ -117,8 +109,8 @@ const Home = () => {
        <hr className="featurette-divider"/>
         <div className="row featurette">
           <div className="col-md-7">
-            <h2 className="featurette-heading fw-normal lh-1">AL FRESCO DINING. <span className="text-body-white">Eat outside and watch the world go by.</span></h2>
-            <p className="lead">Relax, refresh, and enjoy an alfresco feast.</p>
+            <h2 className="featurette-heading fw-normal lh-1 p-5">AL FRESCO DINING. <span className="text-body-white">Eat outside and watch the world go by.</span></h2>
+            <p className="lead p-5">Relax, refresh, and enjoy an alfresco feast.</p>
           </div>
           <div className="col-md-5 col-sm-12">
             <img className="image-1 img-fluid mx-auto "src="./img/featurette-1.png" alt="tables-img" width="500" height="500" />
@@ -130,8 +122,8 @@ const Home = () => {
    
        <div className="row featurette">
          <div className="col-md-6 order-md-2">
-           <h2 className="featurette-heading fw-normal lh-1">NATIVE TAMPIPI BOXES. <span className="text-body-white">See for yourself.</span></h2>
-           <p className="lead">Tampipi Box w/ Lid Made of Woven Pandan/Bariw.</p>
+           <h2 className="featurette-heading fw-normal lh-1 p-5">NATIVE TAMPIPI BOXES. <span className="text-body-white">See for yourself.</span></h2>
+           <p className="lead p-5">Tampipi Box w/ Lid Made of Woven Pandan/Bariw.</p>
          </div>
          <div className="col-md-6 order-md-1">
            <img className="image-2 img-fluid mx-auto" src="./img/featurette-2.png" alt="GoGreen"width="500" height="500"/>
@@ -142,8 +134,8 @@ const Home = () => {
    
        <div className="row featurette">
          <div className="col-md-7">
-           <h2 className="featurette-heading fw-normal lh-1">From our kitchen to your heart. <span className="text-body-white">Love is the secret ingredient.</span></h2>
-           <p className="lead">Celebrate important events together with your Love Ones.</p>
+           <h2 className="featurette-heading fw-normal lh-1 p-5">From our kitchen to your heart. <span className="text-body-white">Love is the secret ingredient.</span></h2>
+           <p className="lead p-5">Celebrate important events together with your Love Ones.</p>
          </div>
          <div className="col-md-5">
           <img className="image-3 img-fluid mx-auto"src="./img/featurette-3.png" alt="celebrate"width="500" height="500"/>
@@ -153,8 +145,8 @@ const Home = () => {
        <hr className="featurette-divider"/>
        <div className="row featurette">
         <div className="col-md-5 order-md-2">
-          <h2 className="featurette-heading fw-normal lh-1">And lastly, this one. <span className="text-body-white">See for yourself.</span></h2>
-          <p className="lead">Experience our very first drive-thru pizza KUBO</p>
+          <h2 className="featurette-heading fw-normal lh-1 p-5">And lastly, this one. <span className="text-body-white">See for yourself.</span></h2>
+          <p className="lead p-5">Experience our very first drive-thru pizza KUBO</p>
         </div>
         <div className="col-md-7 order-md-1">
           <img className="image-4 img-fluid mx-auto"src="./img/featurette-4.png" alt="drive-thru"width="500" height="500"/>
