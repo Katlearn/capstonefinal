@@ -96,7 +96,10 @@ const Footer = () => {
                   <input id="message"type="text" placeholder="Send us you message"className="form-control py-4" />
                 </div>
               </div>
-              <button id="subscribe"className="btn btn-warning mt-4 fw-bold" type="button">Subscribe</button>
+              <Link to='/contact'>
+                <button id="subscribe"className="btn btn-warning mt-4 fw-bold" type="button">Subscribe</button>
+              </Link>
+              
             </div>
           </div>
         </div>

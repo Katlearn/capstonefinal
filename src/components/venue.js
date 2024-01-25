@@ -91,32 +91,32 @@ const Venue = () => {
           <div className="row g-2 align-items-center">
               <div className="col-md-6">
                   <label for="inputFirstName" className="form-label">First Name<span className="text-danger fw-700">*</span></label>
-                  <input type="name" className="form-control" id="inputFirstName" placeholder="John"/>
+                  <input type="name" className="form-control" id="inputFirstName" placeholder="John" required/>
                 </div>
                 <div className="col-md-6">
                   <label for="inputLastName" className="form-label">Last Name<span className="text-danger fw-700">*</span></label>
-                  <input type="name" className="form-control" id="inputLastName" placeholder="Doe"/>
+                  <input type="name" className="form-control" id="inputLastName" placeholder="Doe" required/>
                 </div>
                 <div className="col-6 " >
                   <label for="inputOrganization" className="col-form-label">Organization</label>
-                  <input type="name" id="inputOrganization" className="form-control"placeholder=""/>
+                  <input type="name" id="inputOrganization" className="form-control"placeholder="" required/>
                 </div>
                 <div className="col-6 " >
                   <label for="inputEvent" className="col-form-label">Event<span className="text-danger fw-700">*</span></label>
-                  <input type="name" id="inputEvent" className="form-control"placeholder="ex. Wedding"/>
+                  <input type="name" id="inputEvent" className="form-control"placeholder="ex. Wedding" required/>
                 </div>
               
               <div className="mb-5">
                 <div>
                   <p>Are you a non-profit organization?<span className="text-danger fw-700">*</span></p>
                   <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioYes"/>
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioYes" required/>
                     <label className="form-check-label" for="flexRadioYes">
                       YES
                     </label>
                   </div>
                   <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioNo" checked/>
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioNo" checked />
                     <label className="form-check-label" for="flexRadioNo">
                       NO
                     </label>
@@ -128,23 +128,23 @@ const Venue = () => {
           <div className="row g-3">
             <div className="col-md-6">
               <label for="inputEmail" className="form-label">Email<span className="text-danger fw-700">*</span></label>
-              <input type="email" className="form-control" id="inputEmail"/>
+              <input type="email" className="form-control" id="inputEmail" required/>
             </div>
             <div className="col-md-6">
               <label for="inputContact" className="form-label">Contact<span className="text-danger fw-700">*</span></label>
-              <input type="contact" className="form-control" id="inputContact"/>
+              <input type="contact" className="form-control" id="inputContact" required/>
             </div>
             <div className="col-12">
               <label for="inputAddress" className="form-label">Address</label>
-              <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St"/>
+              <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" required/>
             </div>
             <div className="col-12">
               <label for="inputAddress2" className="form-label">Address 2</label>
-              <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
+              <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" required/>
             </div>
             <div className="col-md-6">
               <label for="inputCity" className="form-label">City</label>
-              <input type="text" className="form-control" id="inputCity"/>
+              <input type="text" className="form-control" id="inputCity" required/>
             </div>
             <div className="col-md-4">
               <label for="inputState" className="form-label">State</label>
@@ -155,7 +155,7 @@ const Venue = () => {
             </div>
             <div className="col-md-2">
               <label for="inputZip" className="form-label">Zip</label>
-              <input type="text" className="form-control" id="inputZip"/>
+              <input type="text" className="form-control" id="inputZip" required/>
             </div>
             <div className='row g-3 mt-5'>
             <div className="col-md-4">
@@ -207,7 +207,7 @@ const Venue = () => {
               </div>
               <div className="form-group mt-5">
                 <label for="Textarea1">Any questions and comments</label>
-                <textarea className="form-control" id="Textarea1" rows="5"></textarea>
+                <textarea className="form-control" id="Textarea1" rows="5" required></textarea>
               </div>
 
             <div className="col-12 mt-5">

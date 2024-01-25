@@ -4,6 +4,7 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 import cookieParser from 'cookie-parser';
+import { connect } from 'react-redux';
 
 
 const app = express()
@@ -243,7 +244,7 @@ const generateOrderReference = () => {
 // API endpoint to save checkout details
 app.post('/api/checkout', (req, res) => {
   const { firstname, lastname,phonenumber,emailaddress, fulladdress,city,state,zipcode, paymentmethod,total,items} = req.body;
-  
+ 
   console.log('checkout_items:',items);
   // Generate order reference number
    const orderReference = generateOrderReference();
@@ -255,92 +256,37 @@ app.post('/api/checkout', (req, res) => {
       console.error('Error inserting data into MySQL:', err);
       res.status(500).send('Internal Server Error');
     } else {
+      let myItems  = JSON.parse(req.body.items)
+      for (var i = 0; i < myItems.length; i++) {
+        var itemNumber = myItems[i].id;
+        var itemName = myItems[i].name;
+        var itemImage = myItems[i].image;
+        var itemPrice = myItems[i].price;
+        var itemCategory = myItems[i].category;
+        var itemQty = myItems[i].qty;
+        console.log(itemNumber, itemName, itemImage, itemPrice, itemCategory, itemQty);
 
-      res.send('Data stored successfully');
-      // items.forEach(item => {
-      //   const query = 'first_database.checkout_items (order_reference,item_id,item_name,image,price,category,qty) VALUES (?,?,?,?,?,?,?)';
-    
-      //   connection.query(query,[orderReference, item.id,item.name,item.image,item.price,item.category,item.qty], (error, results, fields) => {
-      //     if (error) {
-      //       console.error(error);
-      //     } else {
-      //       console.log(`Inserted data with ID: ${results.insertId}`);
-      //     }
-      //   });
-      // });
- 
-      
+        const sql ='INSERT INTO first_database.checkout_items (order_reference,itemNumber,item_name,image,price,category,qty) VALUES (?,?,?,?,?,?,?)';
+
+
+        connection.query( sql,[orderReference, itemNumber, itemName, itemImage, itemPrice, itemCategory, itemQty], 
+          
+          (err,result)=>{
+            if (err) {
+              console.error('Error inserting data into MySQL:', err);
+              res.status(500).send('Internal Server Error');
+            } else {
+
+              res.send('Checkout items stored successfully');
+              console.log(result);
+           }
+
+       }
+        )} 
     }
   });
 });
-
-
-// API endpoint to save checkout details
-
-
-// app.post('/api/checkout', (req, res) => {
-//   const items = req.body.items;
-//   const orderReference = generateOrderReference();
-
-//   // Assuming 'data' is an array of objects to be stored in the database
-//   items.forEach((item) => {
-//     const query = 'INSERT INTO first_database.checkout_items SET ?';
-//     connection.query(query, item, (err, result) => {
-//       if (err) {
-//         console.error('Error inserting data into MySQL:', err);
-//         return;
-//       }
-//       console.log('Data inserted into MySQL:', result);
-//     });
-//   });
-
-//   res.send('Data stored successfully');
-// });
-
-
-// //venue booking 
-
-// // Local storage array (replace it with your actual array)
-// const localStorageArray = [
-//   { key: '1', value: 'John Doe' },
-//   { key: '2', value: 'Jane Doe' },
-//   // Add more data as needed
-// ];
-
-// // Connect to the database
-// connection.connect((err) => {
-//   if (err) {
-//     console.error('Error connecting to MySQL:', err);
-//     return;
-//   }
-
-//   console.log('Connected to MySQL database');
-
-//   // Insert data into the MySQL database
-//   localStorageArray.forEach((item) => {
-//     const sql = 'INSERT INTO your_table_name (column1, column2) VALUES (?, ?)';
-//     const values = [item.key, item.value];
-
-//     connection.query(sql, values, (err, result) => {
-//       if (err) {
-//         console.error('Error inserting data:', err);
-//         return;
-//       }
-
-//       console.log(`Inserted row with ID ${result.insertId}`);
-//     });
-//   });
-
-//   // Close the MySQL connection
-//   connection.end((err) => {
-//     if (err) {
-//       console.error('Error closing MySQL connection:', err);
-//       return;
-//     }
-
-//     console.log('Closed MySQL connection');
-//   });
-// });
+ 
 
 
 
