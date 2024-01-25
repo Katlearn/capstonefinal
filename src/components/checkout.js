@@ -84,13 +84,27 @@ const Checkout = () => {
   //   }
 
   // };
-
+  const [highlightedFields, setHighlightedFields] = useState([]);
   const handleCheckout = async () => {
     const { firstname, lastname, phonenumber, emailaddress, fulladdress, city, state, zipcode, paymentmethod } = checkoutData;
   
     // Check if any required field is empty
     if (!firstname || !lastname || !phonenumber || !emailaddress || !fulladdress || !city || !state || !zipcode || !paymentmethod) {
       alert('Please fill in all required fields!');
+
+        // Highlight the required fields
+      setHighlightedFields([
+        !firstname,
+        !lastname,
+        !phonenumber,
+        !emailaddress,
+        !fulladdress,
+        !city,
+        !state,
+        !zipcode,
+        !paymentmethod,
+      ]);
+
     } else {
       try {
         await axios.post('http://localhost:3000/api/checkout', checkoutData);
@@ -102,7 +116,20 @@ const Checkout = () => {
       }
     }
   };
+  // const highlightRequiredFields = () => {
+  //   // Add logic to highlight required fields in your UI
+  //   // For example, add a class to the input fields with a red border
+  //   document.getElementById('firstname').classList.add('highlight');
+  //   document.getElementById('lastname').classList.add('highlight');
+  //   document.getElementById('phonenumber').classList.add('highlight');
+  //   document.getElementById('emailaddress').classList.add('highlight');
+  //   document.getElementById('fulladdress').classList.add('highlight');
+  //   document.getElementById('city').classList.add('highlight');
+  //   document.getElementById('state').classList.add('highlight');
+  //   document.getElementById('zipcode').classList.add('highlight');
+  //   document.getElementById('paymentmethod').classList.add('highlight');
 
+  // };
 
 
 
@@ -131,49 +158,49 @@ const Checkout = () => {
                   <div className='row'>
                     <div className='col-md-6'>
                       <div className='form-group mb-3'>
-                        <label>Firstname</label>
+                        <label htmlFor="firstname" className={highlightedFields[0] ? 'highlight' : ''}>Firstname</label>
                         <input type='text' name='firstname' id="firstname" className='form-control' onChange={handleInputChange} required></input>
                       </div>
                     </div>
                     <div className='col-md-6'>
                       <div className='form-group mb-3'>
-                        <label>Lastname</label>
+                        <label htmlFor="lastname" className={highlightedFields[0] ? 'highlight' : ''}>Lastname</label>
                         <input type='text' name='lastname' id="lastname" className='form-control' onChange={handleInputChange} required></input>
                       </div>
                     </div>
                     <div className='col-md-6'>
                       <div className='form-group mb-3'>
-                        <label>Phone Number</label>
+                        <label htmlFor="phonenumber" className={highlightedFields[0] ? 'highlight' : ''}>Phone Number</label>
                         <input type='text' name='phonenumber' className='form-control' onChange={handleInputChange} required></input>
                       </div>
                     </div>
                     <div className='col-md-6'>
                       <div className='form-group mb-3'>
-                        <label>Email Address</label>
+                        <label htmlFor="emailaddress" className={highlightedFields[0] ? 'highlight' : ''}>Email Address</label>
                         <input type='text' name='emailaddress' className='form-control' onChange={handleInputChange} required></input>
                       </div>
                     </div>
                     <div className='col-md-12'>
                       <div className='form-group mb-3'>
-                        <label>Full Address</label>
+                        <label htmlFor="fulladdress" className={highlightedFields[0] ? 'highlight' : ''}>Full Address</label>
                         <textarea type='text' name='fulladdress' className='form-control' rows='3' onChange={handleInputChange} required></textarea>
                       </div>
                     </div>
                     <div className='col-md-4'>
                       <div className='form-group mb-'>
-                        <label>City</label>
-                        <input type='text' name='city' className='form-control' onChange={handleInputChange} required></input>
+                        <label htmlFor="city" className={highlightedFields[0] ? 'highlight' : ''}>City</label>
+                        <input type='text' name='city' className='form-control' onChange={handleInputChange} ></input>
                       </div>
                     </div>
                     <div className='col-md-4'>
                       <div className='form-group mb-3'>
-                        <label>State</label>
+                        <label htmlFor="state" className={highlightedFields[0] ? 'highlight' : ''}>State</label>
                         <input type='text' name='state' className='form-control' onChange={handleInputChange} required></input>
                       </div>
                     </div>
                     <div className='col-md-4'>
                       <div className='form-group mb-3'>
-                        <label>Zipcode</label>
+                        <label htmlFor="zipcode" className={highlightedFields[0] ? 'highlight' : ''}>Zipcode</label>
                         <input type='text' name='zipcode' className='form-control' onChange={handleInputChange} rquired></input>
                       </div>
                     </div>
