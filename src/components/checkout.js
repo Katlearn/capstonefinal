@@ -64,26 +64,7 @@ const Checkout = () => {
     e.preventDefault();
     setCheckoutData({ ...checkoutData, [e.target.name]: e.target.value });
   };
-  // const handleCheckout = async () => {
-  //   const firstname = document.getElementById('firstname');
-  //   const lastname = document.getElementById('lastname');
-  //   if (firstname == "" || lastname == "") {
-  //     alert('No data inputted for the required fields!');
-  //   } else {
-  //     try {
-  //       await axios.post('http://localhost:3000/api/checkout', checkoutData);
-  //       alert('Checkout successful!');
-  //       window.location.href = 'http://localhost:3001/confirmation'
-  //     } catch (error) {
-  //       console.error('Error during checkout:', error);
-  //       alert('Error during checkout');
-  //     }
 
-
-
-  //   }
-
-  // };
   const [highlightedFields, setHighlightedFields] = useState([]);
   const handleCheckout = async () => {
     const { firstname, lastname, phonenumber, emailaddress, fulladdress, city, state, zipcode, paymentmethod } = checkoutData;

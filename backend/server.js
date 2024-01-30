@@ -3,8 +3,6 @@ import mysql from 'mysql';
 import cors from 'cors';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
-import cookieParser from 'cookie-parser';
-import { connect } from 'react-redux';
 
 
 const app = express()
