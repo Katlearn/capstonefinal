@@ -88,13 +88,13 @@ const Checkout = () => {
 
     } else {
       try {
-        await axios.post('http://localhost:3000/api/checkout', checkoutData);
+        const response = await axios.post(`${process.env.REACT_APP_MY_API}/checkout`, checkoutData);
         alert('Checkout successful!');
-        window.location.href = 'http://localhost:3001/confirmation';
-      } catch (error) {
+        window.location.href = `${process.env.REACT_APP_OTHER_URL}/confirmation`;
+    } catch (error) {
         console.error('Error during checkout:', error);
         alert('Error during checkout');
-      }
+    }
     }
   };
   // const highlightRequiredFields = () => {

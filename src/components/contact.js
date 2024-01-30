@@ -15,7 +15,7 @@ const Contact = () => {
         const fe_zipcode = document.getElementById('inputZip')
         const fe_message = document.getElementById('textMessage')
 
-        fetch ('http://localhost:3000/contact',{
+        fetch (`${process.env.REACT_APP_API_URL}/contact`,{
           method: 'post',
           headers:{
             'Accept':'application/json',

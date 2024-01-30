@@ -31,7 +31,7 @@ const Venue = () => {
 
 
 
-        fetch('http://localhost:3000/venue',{
+        fetch(`${process.env.REACT_APP_API_URL}/venue`,{
           method:'post',
           headers:{
             'Accept':'application/json',

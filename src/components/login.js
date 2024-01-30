@@ -13,7 +13,7 @@ function Login() {
     submitBtn.onclick=function(){
         const email=document.getElementById('email')
         const password=document.getElementById('password')
-        fetch('http://localhost:3000/login',{
+        fetch(`${process.env.REACT_APP_API_URL}/login`,{
             method:'post',
             headers: {
                 'Accept': 'application/json',
